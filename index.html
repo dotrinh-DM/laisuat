@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Công cụ tính lãi suất | dotrinh</title>
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-latest.pack.js"></script>
     <script type="application/javascript">
         $(document).ready(function () {
@@ -36,7 +37,7 @@
 
                 let tong = ((laisuat / 100) / (365 / songay)) * sotien;
                 let lamtron = Math.round(tong)
-                $("#ketQuaShow").prepend("<li>" + "Làm tròn: " + addCommas(lamtron) + " vnđ ("+ addCommas(tong)+")</li>");
+                $("#ketQuaShow").prepend("<li>" + "Làm tròn: " + addCommas(lamtron) + "vnđ (" + addCommas(tong) + ")</li>");
             }
 
             function addCommas(nStr) {
@@ -50,8 +51,8 @@
                 }
                 return x1 + x2;
             }
-            
-            $( ".OKOK" ).trigger( "click" );
+
+            $(".OKOK").trigger("click");
         });
     </script>
 </head>
@@ -86,32 +87,35 @@
 </div>
 
 <div class="" style="bottom: 0; width: 100%;background-color: azure;">
-    <p style="font-style: italic; text-align: center; font-size: 12px">ví dụ đầu tiên là: khi bạn gửi 1 tỷ trong 1 năm với ls 7% bạn sẽ nhận được 70tr</p>
-    <p style="font-style: italic; text-align: center; font-size: 12px">so_tien_lai = ((lai_suat / 100) / (365 / so_ngay)) * so_tien</p>
+    <p style="font-style: italic; text-align: center; font-size: 12px">ví dụ đầu tiên là: khi bạn gửi 1 tỷ trong 1 năm
+        với ls 7% bạn sẽ nhận được 70tr</p>
+    <p style="font-style: italic; text-align: center; font-size: 12px">so_tien_lai = ((lai_suat / 100) / (365 /
+        so_ngay)) * so_tien</p>
 </div>
 <footer class="footer mt-auto py-3" style="font-size: 9px;">
-        <div class=" text-center">
-            <span class=""> ✅ Công cụ tính toán - dotr Inc. &trade;</span>
-        </div>
-        <div class=" text-center">
+    <div class=" text-center">
+        <span class=""> ✅ Công cụ tính toán - dotr Inc. &trade;</span>
+    </div>
+    <div class=" text-center">
             <span class="">
                 <a class="p-2 text-dark" href="https://iphone81.top/" style="text-decoration: none"> ✅ Hosting trang này được tài trợ bởi iPhone81.top</a>
             </span>
-        </div>
-        <div class=" text-center">
-            <span class=""> ✅ Đã test hoạt động tốt trên máy tính & điện thoại.</span>
-        </div>
-        <br>
-        <div class=" text-center">
-            <span class=""> v0.0.8 </span>
-        </div>
-        <div class="text-center">
-            <span class="">Open Source</span>
-        </div>
-        <div class=" text-center">
-            <span class=""> <a href="https://github.com/dotrinhdev/laisuat"><img width="70px" src="https://dotrinh.com/laisuat/github_logo.png"></a> </span>
-        </div>
-    </footer>
+    </div>
+    <div class=" text-center">
+        <span class=""> ✅ Đã test hoạt động tốt trên máy tính & điện thoại.</span>
+    </div>
+    <br>
+    <div class=" text-center">
+        <span class=""> v0.0.8 </span>
+    </div>
+    <div class="text-center">
+        <span class="">Open Source</span>
+    </div>
+    <div class=" text-center">
+        <span class=""> <a href="https://github.com/dotrinhdev/laisuat"><img alt="tinh-lai-suat" width="70px"
+                                                                             src="https://dotrinh.com/laisuat/github_logo.png"></a> </span>
+    </div>
+</footer>
 <style>
     * {
         box-sizing: border-box;
@@ -120,10 +124,6 @@
     body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .center {
-        text-align: center;
     }
 
     .wrapper {
@@ -135,13 +135,6 @@
 
     .spc {
         margin-top: 5px;
-    }
-
-    @media (max-width: 1024px) {
-        .wrapper {
-            width: 100%;
-            padding: 5px;
-        }
     }
 
     .button {
@@ -174,11 +167,21 @@
 
     li {
         margin-bottom: 12px;
-        text-align: left
     }
 
     .text-center {
-        text-align: center!important;
+        text-align: center !important;
+    }
+
+    @media (max-width: 1024px) {/*mobile, tablet*/
+        .wrapper {
+            width: 100%;
+            padding: 5px;
+        }
+        li {
+            margin-bottom: 12px;
+            text-align: left;
+        }
     }
 </style>
 </body>
