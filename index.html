@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Công cụ tính lãi suất | dotrinh</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.pack.js"></script>
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $(".OKOK").click(function () {
+                tinhToan()
+            });
+
+            $('#songay, #sotien, #laisuat').bind("enterKey", function (e) {
+                tinhToan()
+            });
+            $('#songay, #sotien, #laisuat').keyup(function (e) {
+                if (e.keyCode == 13) {
+                    $(this).trigger("enterKey");
+                }
+            });
+
+            $('#sotien').keyup(function () {
+                // let sotien = $('#sotien');
+                // let sotienVal = sotien.val().replace(',', '');
+                // let formatStr = String(sotienVal).replace(/(.)(?=(\d{3})+$)/g, '$1,')
+                // sotien.val(sotienVal);
+                // console.log(sotienVal)
+            });
+
+            function tinhToan() {
+                let sotien = $('#sotien').val();
+                let laisuat = $('#laisuat').val()
+                let songay = $('#songay').val()
+                // sotien = sotien.replace(',', '')
+
+                let tong = ((laisuat / 100) / (365 / songay)) * sotien;
+                let lamtron = Math.round(tong)
+                $("#ketQuaShow").prepend("<li>" + "Làm tròn: " + addCommas(lamtron) + " vnđ ("+ addCommas(tong)+")</li>");
+            }
+
+            function addCommas(nStr) {
+                nStr += '';
+                var x = nStr.split('.');
+                var x1 = x[0];
+                var x2 = x.length > 1 ? '.' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(x1)) {
+                    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                }
+                return x1 + x2;
+            }
+            
+            $( ".OKOK" ).trigger( "click" );
+        });
+    </script>
+</head>
+<body>
+
+<div class="wrapper" style="text-align:center;">
+    <br>
+    <label>
+        Số tiền (vốn)
+        <br>
+        <input type="number" id="sotien" value="1000000000" required>
+    </label>
+    <br>
+    <label>
+        Lãi suất % theo năm
+        <br>
+        <input type="number" id="laisuat" value="7" required>
+    </label>
+    <br>
+    <label>
+        Số ngày gửi (1 tháng = 30 ngày)
+        <br><input type="number" id="songay" value="365" required>
+    </label>
+    <br>
+    <button class="spc button OKOK" type="button">OK</button>
+    (ENTER)
+    <br>
+    <br>
+    <div id="ajaxphp-results">
+        <ol id="ketQuaShow"></ol>
+    </div>
+</div>
+
+<div class="" style="bottom: 0; width: 100%;background-color: azure;">
+    <p style="font-style: italic; text-align: center; font-size: 12px">ví dụ đầu tiên là: khi bạn gửi 1 tỷ trong 1 năm với ls 7% bạn sẽ nhận được 70tr</p>
+    <p style="font-style: italic; text-align: center; font-size: 12px">so_tien_lai = ((lai_suat / 100) / (365 / so_ngay)) * so_tien</p>
+</div>
+<footer class="footer mt-auto py-3" style="font-size: 9px;">
+        <div class=" text-center">
+            <span class=""> ✅ Công cụ tính toán - dotr Inc. &trade;</span>
+        </div>
+        <div class=" text-center">
+            <span class="">
+                <a class="p-2 text-dark" href="https://iphone81.top/" style="text-decoration: none"> ✅ Hosting trang này được tài trợ bởi iPhone81.top</a>
+            </span>
+        </div>
+        <div class=" text-center">
+            <span class=""> ✅ Đã test hoạt động tốt trên máy tính & điện thoại.</span>
+        </div>
+        <div class=" text-center">
+            <span class=""> v0.0.8 </span>
+        </div>
+    </footer>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .wrapper {
+        margin: 0 auto;
+        width: 50%;
+        background: aqua;
+        padding: 50px;
+    }
+
+    .spc {
+        margin-top: 5px;
+    }
+
+    @media (max-width: 1024px) {
+        .wrapper {
+            width: 100%;
+            padding: 5px;
+        }
+    }
+
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .OKOK {
+        border-radius: 9px;
+        background: #1811ea;
+        color: wheat;
+        margin: 0 auto;
+        width: 100px;
+    }
+
+    input[type=text], input[type=number] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        border-radius: 35px;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+
+    li {
+        margin-bottom: 12px;
+        text-align: left
+    }
+
+    .text-center {
+        text-align: center!important;
+    }
+</style>
+</body>
+</html>
+
+
+
+
+
+
+
+
