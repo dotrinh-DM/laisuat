@@ -5,6 +5,7 @@
 - Dùng **localStorage** **HTML5** để lưu history của từng người, close browser mở lại vẫn thấy history.
 - Format comma with realtime.
 - Toggle Dark mode.
+- Miracle of compounding
 - Other links of tool.
 - Đang dùng, nếu nghĩ ra sẽ bổ sung.
 
