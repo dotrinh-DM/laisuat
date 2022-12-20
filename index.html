@@ -7,9 +7,10 @@
           content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-latest.pack.js"></script>
     <script type="application/javascript">
+        var firstCheck = 0;
         $(document).ready(function () {
             $(".OKOK").click(function () {
-                tinhToan()
+                tinhToan();
             });
 
             $('#songay, #sotien, #laisuat').bind("enterKey", function (e) {
@@ -38,6 +39,10 @@
                 let tong = ((laisuat / 100) / (365 / songay)) * sotien;
                 let lamtron = Math.round(tong)
                 $("#ketQuaShow").prepend("<li>" + "Làm tròn: " + addCommas(lamtron) + "vnđ (" + addCommas(tong) + ")</li>");
+                if (sotien > 500000000 && firstCheck > 0) {
+                    showSnackbar();
+                }
+                firstCheck++;
             }
 
             function addCommas(nStr) {
@@ -54,6 +59,12 @@
 
             $(".OKOK").trigger("click");
         });
+
+        function showSnackbar() {
+            let x = document.getElementById("snackbar");
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
     </script>
 </head>
 <body>
@@ -114,6 +125,8 @@
     <div class=" text-center">
         <span class=""> <a href="https://dotrinh.com/lai-suat-github"><img alt="tinh-lai-suat" width="70px" src="https://dotrinh.com/laisuat/github_logo.png"></a> </span>
     </div>
+    <!--toast-->
+    <div id="snackbar">Úi dồi ôi tiền tiết kiệm khá ấn tượng đó!</div>
 </footer>
 <style>
     * {
@@ -172,14 +185,84 @@
         text-align: center !important;
     }
 
-    @media (max-width: 1024px) {/*mobile, tablet*/
+    @media (max-width: 1024px) {
+        /*mobile, tablet*/
         .wrapper {
             width: 100%;
             padding: 5px;
         }
+
         li {
             margin-bottom: 12px;
             text-align: left;
+        }
+    }
+
+    /* snackbar */
+    #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        transform: translateX(-50%);
+        background-color: #673ab7;
+        color: #fff;
+        text-align: center;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        top: 30px;
+        font-size: 17px;
+        border-radius: 40px;
+        font-weight: bold;
+    }
+
+    #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+        from {
+            top: 0;
+            opacity: 0;
+        }
+        to {
+            top: 30px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadein {
+        from {
+            top: 0;
+            opacity: 0;
+        }
+        to {
+            top: 30px;
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeout {
+        from {
+            top: 30px;
+            opacity: 1;
+        }
+        to {
+            top: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeout {
+        from {
+            top: 30px;
+            opacity: 1;
+        }
+        to {
+            top: 0;
+            opacity: 0;
         }
     }
 </style>
