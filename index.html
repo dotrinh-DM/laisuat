@@ -8,6 +8,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-latest.pack.js"></script>
     <script type="application/javascript">
         var firstCheck = 0;
+        var oldSaving = 0;
         $(document).ready(function () {
             $(".OKOK").click(function () {
                 tinhToan();
@@ -39,8 +40,11 @@
                 let tong = ((laisuat / 100) / (365 / songay)) * sotien;
                 let lamtron = Math.round(tong)
                 $("#ketQuaShow").prepend("<li>" + "Làm tròn: " + addCommas(lamtron) + "vnđ (" + addCommas(tong) + ")</li>");
-                if (sotien > 500000000 && firstCheck > 0) {
+
+                // UX
+                if (sotien > 500000000 && firstCheck > 0 && oldSaving !== sotien) {
                     showSnackbar();
+                    oldSaving = sotien;
                 }
                 firstCheck++;
             }
